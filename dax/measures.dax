@@ -1,0 +1,53 @@
+// ==========================================
+// CORE FINANCIAL & ORDER METRICS
+// ==========================================
+
+Total Revenue = 
+SUM(cleaned_amazon_sales[cleaned_amount])
+
+Total Orders = 
+DISTINCTCOUNT(cleaned_amazon_sales[order_id])
+
+Average Order Value = 
+DIVIDE([Total Revenue], [Total Orders], 0)
+
+// ==========================================
+// LOGISTICS, FULFILLMENT & HEALTH METRICS
+// ==========================================
+
+Fulfillment Rate = 
+DIVIDE(
+    CALCULATE([Total Orders], cleaned_amazon_sales[order_status] = "Shipped"), 
+    [Total Orders], 
+    0
+)
+
+Cancellation Rate = 
+DIVIDE(
+    CALCULATE([Total Orders], cleaned_amazon_sales[order_status] = "Cancelled"), 
+    [Total Orders], 
+    0
+)
+
+Return Rate = 
+DIVIDE(
+    CALCULATE([Total Orders], cleaned_amazon_sales[order_status] = "Returned"), 
+    [Total Orders], 
+    0
+)
+
+Order Defect Rate = 
+DIVIDE(
+    CALCULATE(
+        [Total Orders], 
+        cleaned_amazon_sales[order_status] IN {"Cancelled", "Returned", "Lost in Transit"}
+    ),
+    [Total Orders],
+    0
+)
+
+Lost Revenue = 
+CALCULATE(
+    [Total Revenue], 
+    cleaned_amazon_sales[order_status] IN {"Cancelled", "Returned", "Lost in Transit"}
+)
