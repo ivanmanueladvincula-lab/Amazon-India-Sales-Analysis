@@ -6,9 +6,9 @@ This repository contains a complete end to end data analytics pipeline. My goal 
 Instead of just loading flat files into a visualization tool, I built this project to mirror a true enterprise workflow. I used SQL Server to extract and clean the messy raw data, imported the structured tables into Power BI for dimensional modeling, engineered dynamic DAX measures, and designed a modern executive web application interface.
 
 ## 📊 Dashboard Showcase
-*(Drag and drop your 01_Dashboard_Overview.png file here)*
+<img width="3075" height="1763" alt="Amazon_page-0001" src="https://github.com/user-attachments/assets/23d4be35-d458-449e-8851-657025261870" />
 
-*(Drag and drop your 02_Interactive_Filters.png file here)*
+<img width="1151" height="647" alt="image" src="https://github.com/user-attachments/assets/15a551b3-fc82-453f-8c7f-59494cfecbc4" />
 
 ## 🛠️ Architecture and Workflow
 
