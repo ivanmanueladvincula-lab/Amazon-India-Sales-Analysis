@@ -1,0 +1,14 @@
+# Power BI Auto-Recovery and Temp Files
+*.tmp
+*.temp
+*.~*
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# SQL Server Local Logs
+*.bak
+*.ldf
+*.mdf
