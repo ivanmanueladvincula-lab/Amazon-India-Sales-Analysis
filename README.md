@@ -1,11 +1,11 @@
-Amazon India Sales Performance Analytics
-Project Overview
+**Amazon India Sales Performance Analytics**
+**Project Overview**
 This repository contains a complete end to end data analytics pipeline. My goal for this project was to analyze over 120,000 raw ecommerce records from Amazon India to uncover operational bottlenecks, track fulfillment efficiency, and visualize $78.59M in generated revenue.
 
 Instead of just loading flat files into a visualization tool, I built this project to mirror a true enterprise workflow. I used SQL Server to extract and clean the messy raw data, imported the structured tables into Power BI for dimensional modeling, engineered dynamic DAX measures, and designed a modern executive web application interface.
 
 Architecture and Workflow
-Phase 1: Database Extraction and ETL
+**Phase 1: Database Extraction and ETL**
 The raw dataset contained several data quality issues, including missing financial values, inconsistent boolean flags, and string based date columns. I utilized SQL Server Management Studio to build a robust cleaning pipeline.
 
 I wrote the following T SQL script to create a clean production table. This script resolves missing revenue values by casting them to precise decimals, standardizes the date formats, and converts text based B2B flags into binary integers for faster filtering in the BI layer.
@@ -42,7 +42,7 @@ INTO cleaned_amazon_sales
 FROM raw_amazon_sales;
 GO
 
-Phase 2: Data Modeling and DAX Engineering
+**Phase 2: Data Modeling and DAX Engineering**
 With the cleaned data imported into Power BI, I established the relational model and began engineering the metrics. I deliberately separated core financial performance from logistics health to give stakeholders a clear view of both gross sales and operational friction.
 
 Core Financial Measures
@@ -77,7 +77,7 @@ CALCULATE(
     cleaned_amazon_sales[order_status] IN {"Cancelled", "Returned", "Lost in Transit"}
 )
 
-Phase 3: User Interface and Visual Engineering
+**Phase 3: User Interface and Visual Engineering**
 I spent a significant amount of time refining the UI and UX to ensure the dashboard looked like a custom built web application rather than a default spreadsheet report.
 
 Optimizing the Data to Ink Ratio: I completely stripped away the redundant Y axis on the category bar chart and the X axis on the state chart. By placing clean data labels directly on the bars and rounding values to one decimal place, I eliminated visual clutter.
@@ -86,7 +86,7 @@ Unified Branding: I strictly enforced an Amazon inspired color palette. The canv
 
 Custom Navigation Panel: I designed a dedicated white vertical panel on the far right of the canvas to house all user controls. I standardized the Customer Type, Order Status, and Fulfillment filters into uniform dropdown menus to save space. I also integrated a global Reset button powered by Power BI bookmarks, allowing executives to clear all active filters with a single click.
 
-Phase 4: Core Business Discoveries
+**Phase 4: Core Business Discoveries**
 After finalizing the interactive elements, several key insights emerged from the data:
 
 Regional Concentration: Maharashtra completely dominates regional sales, generating $13.3M in total revenue. Karnataka follows with $10.5M, while other states trail significantly.
